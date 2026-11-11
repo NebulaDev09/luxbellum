@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b5lmp4kjo3u2b"]
+
+[ext_resource type="Shader" uid="uid://ct3xwcdjroug3" path="res://main.gdshader" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://d1qr2jinv3m6p" path="res://main.gd" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://hw8pfp67076h" path="res://scenes/platform.tscn" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bcc8vgom3iy6m" path="res://scenes/player.tscn" id="4_o6xl0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggnaw"]
+shader = ExtResource("1_jyhfs")
+
+[node name="Node2D" type="Node2D" unique_id=1899597489]
+material = SubResource("ShaderMaterial_ggnaw")
+script = ExtResource("2_tbgi4")
+
+[node name="platform" parent="." unique_id=1302077303 groups=["platforms"] instance=ExtResource("3_tefeu")]
+position = Vector2(224, -56)
+color = Color(1, 0, 0, 1)
+
+[node name="player" parent="." unique_id=2119125288 instance=ExtResource("4_o6xl0")]
+position = Vector2(328, -88)
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=2111088831]
+position = Vector2(-328, 88)
+
+[node name="platform2" parent="." unique_id=1009677345 groups=["platforms"] instance=ExtResource("3_tefeu")]
+position = Vector2(272, -56)
+color = Color(0, 0, 1, 1)
+
+[node name="platform3" parent="." unique_id=991018149 instance=ExtResource("3_tefeu")]
+position = Vector2(328, -56)
+
+[connection signal="glass_change" from="player" to="." method="_on_player_glass_change"]
